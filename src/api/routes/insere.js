@@ -33,7 +33,7 @@ route.post('/', function (req, res) {
         })
         
         Album.save()
-        
+        res.send("Album salvo com sucesso")
         
     }
 })
