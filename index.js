@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORTA = 8080 || process.env.PORT
+const PORTA = process.env.PORT || 8080 
 const insereAlbum = require('./src/api/routes/insere.js')
 const listaAlbum = require('./src/api/routes/busca.js')
 app.use(express.urlencoded({extended: true}))
