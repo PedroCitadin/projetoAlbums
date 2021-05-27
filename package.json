@@ -1,0 +1,15 @@
+{
+  "name": "projetoalbuns",
+  "version": "1.0.0",
+  "description": "exercicio para aula de ppw2",
+  "main": "index.js",
+  "scripts": {
+    "start"  : "node index.js"
+  },
+  "author": "Pedro Citadin Coelho",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.11"
+  }
+}

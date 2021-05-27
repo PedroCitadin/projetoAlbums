@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Album</title>
+</head>
+<style>
+    #main {
+        width: 400px;
+        padding-bottom: 20px;
+        background-color: bisque;
+    }
+    .tot{
+        display: none;
+    }
+</style>
+
+<body>
+    <center>
+        <div id="main">
+            <form method="POST" action="/insere">
+                <br>
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" name="nome">
+                <br>
+                <br>
+                <label for="nome">Artista: </label>
+                <input type="text" id="artista" name="artista">
+                <br>
+                <br>
+                <label for="nome">Ano: </label>
+                <input type="text" id="ano" name="ano">
+                <br>
+                <br>
+                <input type="number" id="totgenero" name="totgenero" class="tot" value=1> 
+                <input type="number" id="totfaixa" name="totfaixa" class="tot" value=1>
+                <label>Gêneros:</label>
+                <div id="generos">
+                    <input type="text" id="generos1" name="generos1">
+
+                </div>
+                
+                <br>
+                <button type="button" id="maisG">+</button>
+                <button type="button" id="menosG">-</button>
+                <br>
+                <br>
+                <label>Faixas:</label>
+                <div id="faixas">
+                    <input type="text" id="faixas1" name="faixas1">
+
+                </div>
+                 
+                <br>
+                <button type="button" id="maisF">+</button>
+                <button type="button" id="menosF">-</button>
+                <br>
+                <br>
+                <label for="lancamento">Lançamento</label>
+                <input id="lancamento" name="lancamento" type="date">
+                <br>
+                <br>
+                
+                <input type="submit" value="Salvar">
+            </form>
+
+
+
+
+        </div>
+    </center>
+
+</body>
+<script>
+    let contadorG = 2
+    let contadorF = 2
+    const botaoMaisG = document.querySelector("#maisG")
+    const botaoMenosG = document.querySelector("#menosG")
+    const botaoMaisF = document.querySelector("#maisF")
+    const botaoMenosF = document.querySelector("#menosF")
+    function criaG(event) {
+        const generos = document.querySelector("#generos");
+        const inp = document.createElement('input')
+        const br = document.createElement('br')
+        br.id = "br"+contadorG
+        const br2 = document.createElement('br')
+        br2.id = "br2"+contadorG
+        inp.type = "text"
+        inp.id = "generos" + contadorG
+        inp.name = "generos" + contadorG
+        generos.appendChild(br)
+        generos.appendChild(br2)
+        generos.appendChild(inp)
+        const totG = document.querySelector("#totgenero")
+        totG.value = contadorG
+        contadorG++
+    }
+    function removeG(event) {
+        console.log(contadorG)
+        if (contadorG > 2) {
+            const generoN = document.querySelector(("#generos" + (contadorG - 1)))
+            const generos = document.querySelector("#generos")
+            const br = document.querySelector("#br"+(contadorG-1))
+            const br2 = document.querySelector("#br2"+(contadorG-1))
+            generos.removeChild(generoN)
+            generos.removeChild(br2)
+            generos.removeChild(br)
+            
+            contadorG--
+            const totG = document.querySelector("#totgenero")
+            console.log(totG.value)
+            totG.value = contadorG
+            console.log(totG.value)
+        }else if(contadorG<=2){
+            alert("É preciso ter pelo menos um gênero")
+        }
+
+    }
+    function criaF(event) {
+        
+        const faixas = document.querySelector("#faixas");
+        const inp = document.createElement('input')
+        const brf = document.createElement('br')
+        brf.id = "brf"+contadorF
+        const brf2 = document.createElement('br')
+        brf2.id = "brf2"+contadorF
+        inp.type = "text"
+        inp.id = "faixas" + contadorF
+        inp.name = "faixas" + contadorF
+        faixas.appendChild(brf)
+        faixas.appendChild(brf2)
+        faixas.appendChild(inp)
+        const totF = document.querySelector("#totfaixa")
+        totF.value = contadorF
+        contadorF++
+        console.log(contadorF)
+    }
+    function removeF(event) {
+        console.log(contadorF)
+        if (contadorF > 2) {
+            const faixaN = document.querySelector(("#faixas" + (contadorF - 1)))
+            const faixas = document.querySelector("#faixas")
+            const brf = document.querySelector("#brf"+(contadorF-1))
+            const brf2 = document.querySelector("#brf2"+(contadorF-1))
+            faixas.removeChild(faixaN)
+            faixas.removeChild(brf2)
+            faixas.removeChild(brf)
+            contadorF--
+            const totF = document.querySelector("#totfaixa")
+            totF.value = contadorF
+        }else if(contadorF<=2){
+            alert("É preciso ter pelo menos uma faixa")
+        }
+
+    }
+    botaoMenosF.addEventListener('click', removeF)
+    botaoMaisF.addEventListener('click', criaF)
+    botaoMenosG.addEventListener('click', removeG)
+    botaoMaisG.addEventListener('click', criaG)
+</script>
+
+</html>
