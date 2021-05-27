@@ -24,6 +24,7 @@ route.post('/', function (req, res) {
         }
         
         let Album = new albums({
+            
             nome: nome,
             artista: artista,
             ano: Number(ano),
